@@ -21,7 +21,6 @@ class LoginViewController: UIViewController {
     @IBOutlet var signUpBtn: UIButton!
     
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -37,7 +36,7 @@ class LoginViewController: UIViewController {
         
         var user = PFUser()
 
-        user.email = emailText.text
+        user.username = emailText.text
         user.password = passwordText.text
         user.signUpInBackgroundWithBlock {
             (succeeded: Bool, error: NSError?) -> Void in
@@ -45,7 +44,7 @@ class LoginViewController: UIViewController {
                 let errorString = error.userInfo["error"] as? NSString
                 print(errorString)
             } else {
-                self.performSegueWithIdentifier("", sender: self)
+                self.performSegueWithIdentifier("LoginSegue", sender: self)
             }
         }
     }
@@ -56,7 +55,7 @@ class LoginViewController: UIViewController {
         PFUser.logInWithUsernameInBackground(emailText.text!, password: passwordText.text!) {
             (user: PFUser?, error: NSError?) -> Void in
             if user != nil {
-                self.performSegueWithIdentifier("", sender: self)
+                self.performSegueWithIdentifier("LoginSegue", sender: self)
             }
             else {
                     let errorString = error!.userInfo["error"] as? NSString
@@ -68,8 +67,6 @@ class LoginViewController: UIViewController {
 
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
     }
 
 }

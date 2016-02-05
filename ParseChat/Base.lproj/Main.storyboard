@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
     </dependencies>
     <scenes>
         <!--Login View Controller-->
@@ -63,11 +63,73 @@
                         <outlet property="passwordLabel" destination="ca2-QK-2UE" id="7Tr-80-V3d"/>
                         <outlet property="passwordText" destination="nWM-CG-suC" id="4pN-Sh-dcY"/>
                         <outlet property="signUpBtn" destination="V4D-Hd-2M1" id="9dh-eU-Hy2"/>
+                        <segue destination="Myr-c4-RmL" kind="modal" identifier="LoginSegue" id="zCP-X9-Rvz"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="173.33333333333334" y="335.59333333333331"/>
+        </scene>
+        <!--Chat-->
+        <scene sceneID="AjE-LA-2l0">
+            <objects>
+                <viewController id="XXo-R3-NQI" customClass="ChatViewController" customModule="ParseChat" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="zDT-2a-45Y"/>
+                        <viewControllerLayoutGuide type="bottom" id="zve-hc-6YW"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="P3R-ml-nMA">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OhL-6G-FCF">
+                                <rect key="frame" x="251" y="207" width="49" height="30"/>
+                                <state key="normal" title="Submit"/>
+                                <connections>
+                                    <action selector="onSubmit:" destination="XXo-R3-NQI" eventType="touchUpInside" id="bDV-3b-ker"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Enter a Message" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZFw-Ml-r1I">
+                                <rect key="frame" x="20" y="112" width="280" height="87"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="ZFw-Ml-r1I" firstAttribute="top" secondItem="zDT-2a-45Y" secondAttribute="bottom" constant="48" id="1nq-Ad-WQE"/>
+                            <constraint firstItem="OhL-6G-FCF" firstAttribute="top" secondItem="ZFw-Ml-r1I" secondAttribute="bottom" constant="8" id="59u-9I-tb3"/>
+                            <constraint firstItem="ZFw-Ml-r1I" firstAttribute="leading" secondItem="P3R-ml-nMA" secondAttribute="leading" constant="20" id="JNa-Az-tRq"/>
+                            <constraint firstAttribute="trailing" secondItem="OhL-6G-FCF" secondAttribute="trailing" constant="20" id="mB6-Fv-YXe"/>
+                            <constraint firstAttribute="trailing" secondItem="ZFw-Ml-r1I" secondAttribute="trailing" constant="20" id="qci-jr-NNK"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Chat" id="xfA-PA-wNe"/>
+                    <connections>
+                        <outlet property="textField" destination="ZFw-Ml-r1I" id="loR-V4-lMW"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Mfh-Rk-pSu" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1125" y="335"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Jeg-HD-LQ4">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Myr-c4-RmL" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Rzv-3J-YP7">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="XXo-R3-NQI" kind="relationship" relationship="rootViewController" id="cg2-uE-fyi"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="IEj-Za-EhU" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="593" y="335"/>
         </scene>
     </scenes>
 </document>
