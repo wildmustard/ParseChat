@@ -10,14 +10,28 @@
 import UIKit
 import Parse
 
-class ChatViewController: UIViewController {
+class ChatViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+    
+    @IBOutlet var tableView: UITableView!
     
     @IBOutlet weak var textField: UITextField!
     override func viewDidLoad() {
         super.viewDidLoad()
         textField.contentVerticalAlignment = UIControlContentVerticalAlignment.Top
         
+        
+        tableView.dataSource = self
+        tableView.estimatedRowHeight = 180
+        tableView.rowHeight = UITableViewAutomaticDimension
+        
+        NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: "onTimer", userInfo: nil, repeats: true)
+        
         // Do any additional setup after loading the view.
+    }
+    
+    func onTimer(){
+        var query = PFQuery(className: "message")
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -39,6 +53,19 @@ class ChatViewController: UIViewController {
                 print(error?.description)
             }
         }
+    }
+    
+    
+    
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
+    }
+    
+    
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    
     }
     
     
